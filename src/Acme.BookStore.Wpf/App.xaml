@@ -11,6 +11,16 @@
                 <!-- Theme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="DataGridBaseStyle"
+                   TargetType="{x:Type DataGrid}"
+                   BasedOn="{StaticResource MahApps.Styles.DataGrid}">
+                <Setter Property="AutoGenerateColumns" Value="False" />
+                <Setter Property="IsReadOnly" Value="True" />
+            </Style>
+
+            <Style BasedOn="{StaticResource DataGridBaseStyle}"
+                   TargetType="{x:Type DataGrid}" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

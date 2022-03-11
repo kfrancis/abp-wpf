@@ -4,8 +4,8 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
-                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  mc:Ignorable="d"
                  WindowStartupLocation="CenterScreen"
                  ResizeMode="CanResizeWithGrip"
@@ -14,7 +14,21 @@
         Title="{Binding Title}" Height="450" Width="800">
     <StackPanel Orientation="Vertical">
         <Button Content="Load" Command="{Binding LoadDataCommand}" />
-        <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="True" IsReadOnly="True">
+        <DataGrid ItemsSource="{Binding Books}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"
+                                    Width="Auto" />
+                <DataGridTextColumn Header="Type"
+                    Binding="{Binding Type}"
+                    Width="Auto" />
+                <DataGridTextColumn Header="Price"
+                    Binding="{Binding Price}"
+                    Width="Auto" />
+                <DataGridTextColumn Header="Publish Date"
+                    Binding="{Binding PublishDate}"
+                    Width="Auto" />
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </mah:MetroWindow>
