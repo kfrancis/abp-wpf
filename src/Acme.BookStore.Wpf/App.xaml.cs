@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using Acme.BookStore.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,17 @@ public partial class App : Application
 
     protected override async void OnStartup(StartupEventArgs e)
     {
-        Log.Logger = new LoggerConfiguration()
+        base.OnStartup(e);
+
+        var splashScreen = new SplashWindow();
+        this.MainWindow = splashScreen;
+        splashScreen.Show();
+
+        //in order to ensure the UI stays responsive, we need to
+        //do the work on a different thread
+        await Task.Factory.StartNew(async () =>
+        {
+            Log.Logger = new LoggerConfiguration()
 #if DEBUG
             .MinimumLevel.Debug()
 #else
@@ -28,24 +39,32 @@ public partial class App : Application
             .WriteTo.Async(c => c.File("Logs/logs.txt"))
             .CreateLogger();
 
-        try
-        {
-            Log.Information("Starting WPF host.");
+            try
+            {
+                Log.Information("Starting WPF host.");
 
-            _abpApplication = await AbpApplicationFactory.CreateAsync<BookStoreWpfModule>(options =>
-           {
-               options.UseAutofac();
-               options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
-           });
+                _abpApplication = await AbpApplicationFactory.CreateAsync<BookStoreWpfModule>(options =>
+                {
+                    options.UseAutofac();
+                    options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
+                });
 
-            await _abpApplication.InitializeAsync();
+                await _abpApplication.InitializeAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly!");
+            }
 
-            _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
-        }
-        catch (Exception ex)
-        {
-            Log.Fatal(ex, "Host terminated unexpectedly!");
-        }
+            //since we're not on the UI thread
+            //once we're done we need to use the Dispatcher
+            //to create and show the main window
+            this.Dispatcher.Invoke(() =>
+            {
+                _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
+                splashScreen.Close();
+            });
+        });
     }
 
     protected override async void OnExit(ExitEventArgs e)
