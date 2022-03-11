@@ -1,4 +1,4 @@
-﻿using Acme.BookStore.EntityFrameworkCore;
+using Acme.BookStore.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
 namespace Acme.BookStore;
@@ -8,5 +8,4 @@ namespace Acme.BookStore;
     )]
 public class BookStoreDomainTestModule : AbpModule
 {
-
 }

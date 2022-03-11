@@ -44,6 +44,7 @@ public class BookStoreDbContext :
 
     //Identity
     public DbSet<IdentityUser> Users { get; set; }
+
     public DbSet<IdentityRole> Roles { get; set; }
     public DbSet<IdentityClaimType> ClaimTypes { get; set; }
     public DbSet<OrganizationUnit> OrganizationUnits { get; set; }
@@ -52,14 +53,14 @@ public class BookStoreDbContext :
 
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
+
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
-    #endregion
+    #endregion Entities from the modules
 
     public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options)
         : base(options)
     {
-
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

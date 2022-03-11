@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using MvvmHelpers;
@@ -35,7 +32,8 @@ namespace Acme.BookStore.Wpf.ViewModels
             IsBusy = true;
             try
             {
-                await Dispatcher.CurrentDispatcher.InvokeAsync(async () => {
+                await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
+                {
                     await func();
                 });
             }

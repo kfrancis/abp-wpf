@@ -1,9 +1,8 @@
 $(function () {
     var l = abp.localization.getResource("BookStore");
-	
+
 	var bookService = window.acme.bookStore.books.books;
-	
-	
+
     var createModal = new abp.ModalManager({
         viewUrl: abp.appPath + "Books/CreateModal",
         scriptUrl: "/Pages/Books/createModal.js",
@@ -95,7 +94,7 @@ $(function () {
                     if (!publishDate) {
                         return "";
                     }
-                    
+
 					var date = Date.parse(publishDate);
                     return (new Date(date)).toLocaleDateString(abp.localization.currentCulture.name);
                 }

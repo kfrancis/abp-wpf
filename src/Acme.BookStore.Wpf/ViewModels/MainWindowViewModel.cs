@@ -17,7 +17,8 @@ namespace Acme.BookStore.Wpf.ViewModels
             _booksAppService = booksAppService;
         }
 
-        public MainWindowViewModel() { } // for design-time
+        public MainWindowViewModel()
+        { } // for design-time
 
         public ObservableRangeCollection<BookDto> Books
         {

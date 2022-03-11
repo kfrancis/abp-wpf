@@ -1,4 +1,3 @@
-using Acme.BookStore.Books;
 using System;
 using Volo.Abp.Application.Dtos;
 

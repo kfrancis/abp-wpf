@@ -1,14 +1,13 @@
-using Acme.BookStore.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using Acme.BookStore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
-using Acme.BookStore.EntityFrameworkCore;
 
 namespace Acme.BookStore.Books
 {
@@ -17,7 +16,6 @@ namespace Acme.BookStore.Books
         public EfCoreBookRepository(IDbContextProvider<BookStoreDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
-
         }
 
         public async Task<List<Book>> GetListAsync(

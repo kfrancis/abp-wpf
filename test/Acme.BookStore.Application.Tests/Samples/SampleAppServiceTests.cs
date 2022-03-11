@@ -1,5 +1,5 @@
-﻿using Shouldly;
 using System.Threading.Tasks;
+using Shouldly;
 using Volo.Abp.Identity;
 using Xunit;
 
@@ -10,6 +10,7 @@ namespace Acme.BookStore.Samples;
  * (like IIdentityUserAppService here).
  * Only test your own application services.
  */
+
 public class SampleAppServiceTests : BookStoreApplicationTestBase
 {
     private readonly IIdentityUserAppService _userAppService;

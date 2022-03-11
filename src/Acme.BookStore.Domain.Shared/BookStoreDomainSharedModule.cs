@@ -1,4 +1,4 @@
-﻿using Acme.BookStore.Localization;
+using Acme.BookStore.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;

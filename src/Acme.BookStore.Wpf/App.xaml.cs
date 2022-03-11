@@ -41,7 +41,6 @@ public partial class App : Application
             await _abpApplication.InitializeAsync();
 
             _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
-
         }
         catch (Exception ex)
         {
@@ -53,5 +52,11 @@ public partial class App : Application
     {
         await _abpApplication.ShutdownAsync();
         Log.CloseAndFlush();
+    }
+
+    private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+    {
+        e.Handled = true;
+        Log.Error(e.Exception, "Unhandled exception!");
     }
 }

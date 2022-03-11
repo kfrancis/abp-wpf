@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Acme.BookStore.Models.Test;
 

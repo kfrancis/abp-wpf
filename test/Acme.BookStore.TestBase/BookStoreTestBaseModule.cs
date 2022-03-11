@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Authorization;
 using Volo.Abp.Autofac;

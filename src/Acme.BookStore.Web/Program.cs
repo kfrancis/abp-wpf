@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ namespace Acme.BookStore.Web;
 
 public class Program
 {
-    public async static Task<int> Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
         Log.Logger = new LoggerConfiguration()
 #if DEBUG

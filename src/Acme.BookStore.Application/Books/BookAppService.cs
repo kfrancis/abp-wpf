@@ -1,19 +1,13 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq.Dynamic.Core;
+using Acme.BookStore.Permissions;
 using Microsoft.AspNetCore.Authorization;
-using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Domain.Repositories;
-using Acme.BookStore.Permissions;
-using Acme.BookStore.Books;
 
 namespace Acme.BookStore.Books
 {
-
     [AllowAnonymous]
     public class BooksAppService : ApplicationService, IBooksAppService
     {
@@ -50,7 +44,6 @@ namespace Acme.BookStore.Books
         [Authorize(BookStorePermissions.Books.Create)]
         public virtual async Task<BookDto> CreateAsync(BookCreateDto input)
         {
-
             var book = ObjectMapper.Map<BookCreateDto, Book>(input);
 
             book = await _bookRepository.InsertAsync(book, autoSave: true);
@@ -60,7 +53,6 @@ namespace Acme.BookStore.Books
         [Authorize(BookStorePermissions.Books.Edit)]
         public virtual async Task<BookDto> UpdateAsync(Guid id, BookUpdateDto input)
         {
-
             var book = await _bookRepository.GetAsync(id);
             ObjectMapper.Map(input, book);
             book = await _bookRepository.UpdateAsync(book, autoSave: true);

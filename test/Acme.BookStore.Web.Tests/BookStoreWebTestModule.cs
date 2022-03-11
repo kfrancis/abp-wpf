@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Globalization;
+using Acme.BookStore.Localization;
+using Acme.BookStore.Web;
+using Acme.BookStore.Web.Menus;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
-using Acme.BookStore.Localization;
-using Acme.BookStore.Web;
-using Acme.BookStore.Web.Menus;
 using Volo.Abp.AspNetCore.TestBase;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;

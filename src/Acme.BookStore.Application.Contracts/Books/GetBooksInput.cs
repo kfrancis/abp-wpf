@@ -1,6 +1,5 @@
-using Acme.BookStore.Books;
-using Volo.Abp.Application.Dtos;
 using System;
+using Volo.Abp.Application.Dtos;
 
 namespace Acme.BookStore.Books
 {
@@ -17,7 +16,6 @@ namespace Acme.BookStore.Books
 
         public GetBooksInput()
         {
-
         }
     }
 }

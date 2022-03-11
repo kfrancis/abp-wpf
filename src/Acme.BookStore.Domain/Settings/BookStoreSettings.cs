@@ -1,4 +1,4 @@
-﻿namespace Acme.BookStore.Settings;
+namespace Acme.BookStore.Settings;
 
 public static class BookStoreSettings
 {

@@ -1,6 +1,5 @@
-﻿namespace Acme.BookStore;
+namespace Acme.BookStore;
 
 public abstract class BookStoreDomainTestBase : BookStoreTestBase<BookStoreDomainTestModule>
 {
-
 }

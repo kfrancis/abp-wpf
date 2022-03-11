@@ -1,9 +1,9 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
+using Acme.BookStore.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Acme.BookStore.Data;
 using Serilog;
 using Volo.Abp;
 
@@ -24,9 +24,9 @@ public class DbMigratorHostedService : IHostedService
     {
         using (var application = await AbpApplicationFactory.CreateAsync<BookStoreDbMigratorModule>(options =>
         {
-           options.Services.ReplaceConfiguration(_configuration);
-           options.UseAutofac();
-           options.Services.AddLogging(c => c.AddSerilog());
+            options.Services.ReplaceConfiguration(_configuration);
+            options.UseAutofac();
+            options.Services.AddLogging(c => c.AddSerilog());
         }))
         {
             await application.InitializeAsync();

@@ -1,4 +1,5 @@
 using Acme.BookStore.EntityFrameworkCore;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
@@ -16,5 +17,7 @@ public class WpfModule : AbpModule
     {
         Configure<AbpBackgroundJobOptions>(options => options.IsJobExecutionEnabled = false);
         Configure<AbpBackgroundWorkerOptions>(options => options.IsEnabled = false);
+
+        context.Services.AddSingleton<IDialogCoordinator>(DialogCoordinator.Instance);
     }
 }

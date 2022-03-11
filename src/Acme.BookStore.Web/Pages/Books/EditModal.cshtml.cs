@@ -1,11 +1,7 @@
 using System;
-using System.Linq;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Volo.Abp.Application.Dtos;
 using Acme.BookStore.Books;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Acme.BookStore.Web.Pages.Books
 {
@@ -29,7 +25,6 @@ namespace Acme.BookStore.Web.Pages.Books
         {
             var book = await _booksAppService.GetAsync(Id);
             Book = ObjectMapper.Map<BookDto, BookUpdateDto>(book);
-
         }
 
         public async Task<IActionResult> OnPostAsync()

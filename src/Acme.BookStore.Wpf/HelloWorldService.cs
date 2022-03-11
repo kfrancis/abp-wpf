@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.DependencyInjection;
 
@@ -12,6 +12,7 @@ public class HelloWorldService : ITransientDependency
     {
         Logger = NullLogger<HelloWorldService>.Instance;
     }
+
     public string SayHello()
     {
         Logger.LogInformation("Call SayHello");

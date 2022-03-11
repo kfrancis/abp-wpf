@@ -8,6 +8,5 @@ namespace Acme.BookStore.Books
         {
             return string.Format(DefaultSorting, withEntityName ? "Book." : string.Empty);
         }
-
     }
 }

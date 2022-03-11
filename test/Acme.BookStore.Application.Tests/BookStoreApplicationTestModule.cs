@@ -1,4 +1,4 @@
-﻿using Volo.Abp.Modularity;
+using Volo.Abp.Modularity;
 
 namespace Acme.BookStore;
 
@@ -8,5 +8,4 @@ namespace Acme.BookStore;
     )]
 public class BookStoreApplicationTestModule : AbpModule
 {
-
 }

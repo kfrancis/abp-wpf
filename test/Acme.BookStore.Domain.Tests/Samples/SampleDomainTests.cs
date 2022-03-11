@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Shouldly;
 using Volo.Abp.Identity;
 using Xunit;
@@ -10,6 +10,7 @@ namespace Acme.BookStore.Samples;
  * (like IdentityUserManager here).
  * Only test your own domain services.
  */
+
 public class SampleDomainTests : BookStoreDomainTestBase
 {
     private readonly IIdentityUserRepository _identityUserRepository;

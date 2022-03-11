@@ -1,10 +1,7 @@
-using Acme.BookStore.Books;
 using System;
-using Volo.Abp.Domain.Entities;
-using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.MultiTenancy;
 using JetBrains.Annotations;
 using Volo.Abp;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Acme.BookStore.Books
 {
@@ -21,7 +18,6 @@ namespace Acme.BookStore.Books
 
         public Book()
         {
-
         }
 
         public Book(Guid id, string name, BookType type, DateTime publishDate, float price)
