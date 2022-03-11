@@ -32,7 +32,7 @@ public partial class App : Application
         {
             Log.Information("Starting WPF host.");
 
-            _abpApplication = await AbpApplicationFactory.CreateAsync<WpfModule>(options =>
+            _abpApplication = await AbpApplicationFactory.CreateAsync<BookStoreWpfModule>(options =>
            {
                options.UseAutofac();
                options.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));

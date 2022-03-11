@@ -11,7 +11,7 @@
                  ResizeMode="CanResizeWithGrip"
                  Dialog:DialogParticipation.Register="{Binding}"
         d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding Title}" Height="450" Width="800">
     <StackPanel Orientation="Vertical">
         <Button Content="Load" Command="{Binding LoadDataCommand}" />
         <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="True" IsReadOnly="True">

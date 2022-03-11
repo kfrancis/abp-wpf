@@ -2,7 +2,9 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using Acme.BookStore.Localization;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using MvvmHelpers;
 using Volo.Abp.DependencyInjection;
@@ -13,11 +15,13 @@ namespace Acme.BookStore.Wpf.ViewModels
     {
         private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ILogger<AppViewModel> _logger;
+        private readonly IStringLocalizer<BookStoreResource> _localizer;
 
-        protected AppViewModel(IDialogCoordinator dialogCoordinator, ILogger<AppViewModel> logger)
+        protected AppViewModel(IDialogCoordinator dialogCoordinator, ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer)
         {
             _dialogCoordinator = dialogCoordinator;
             _logger = logger;
+            _localizer = localizer;
         }
 
         protected AppViewModel(IDialogCoordinator dialogCoordinator)
@@ -49,7 +53,7 @@ namespace Acme.BookStore.Wpf.ViewModels
             {
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
-                    _ = Task.Run(() => _dialogCoordinator.ShowMessageAsync(this, "Error", "Failed: " + ex.Message));
+                    _ = Task.Run(() => _dialogCoordinator.ShowMessageAsync(this, _localizer?["Error"] ?? "Error", (_localizer?["Failed"] ?? "Failed") + $": {ex.ToStringDemystified()}"));
                 });
             }
 

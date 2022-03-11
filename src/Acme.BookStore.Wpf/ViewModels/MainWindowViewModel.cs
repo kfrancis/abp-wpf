@@ -1,8 +1,10 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
+using Acme.BookStore.Localization;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using MvvmHelpers;
 
@@ -14,10 +16,14 @@ namespace Acme.BookStore.Wpf.ViewModels
 
         private ObservableRangeCollection<BookDto> _books;
 
-        public MainWindowViewModel(IBooksAppService booksAppService, IDialogCoordinator dialogCoordinator, ILoggerFactory loggerFactory)
-            : base(dialogCoordinator, loggerFactory.CreateLogger<AppViewModel>())
+        public MainWindowViewModel(IBooksAppService booksAppService,
+                                   IDialogCoordinator dialogCoordinator,
+                                   ILoggerFactory loggerFactory,
+                                   IStringLocalizer<BookStoreResource> localizer)
+            : base(dialogCoordinator, loggerFactory.CreateLogger<AppViewModel>(), localizer)
         {
             _booksAppService = booksAppService;
+            Title = localizer["Main"];
         }
 
         public MainWindowViewModel()
@@ -48,7 +54,6 @@ namespace Acme.BookStore.Wpf.ViewModels
                 {
                     _books.Add(bookDetails);
                 }
-                throw new System.Exception("test");
             });
         }
     }

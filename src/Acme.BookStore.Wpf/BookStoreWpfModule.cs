@@ -11,7 +11,7 @@ namespace Acme.BookStore.Wpf;
 [DependsOn(typeof(AbpAutofacModule),
     typeof(BookStoreApplicationModule),
     typeof(BookStoreEntityFrameworkCoreModule))]
-public class WpfModule : AbpModule
+public class BookStoreWpfModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
