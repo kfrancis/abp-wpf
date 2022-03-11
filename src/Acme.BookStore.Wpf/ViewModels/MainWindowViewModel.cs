@@ -2,6 +2,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
 using CommunityToolkit.Mvvm.Input;
+using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Logging;
 using MvvmHelpers;
 
 namespace Acme.BookStore.Wpf.ViewModels
@@ -12,12 +14,14 @@ namespace Acme.BookStore.Wpf.ViewModels
 
         private ObservableRangeCollection<BookDto> _books;
 
-        public MainWindowViewModel(IBooksAppService booksAppService)
+        public MainWindowViewModel(IBooksAppService booksAppService, IDialogCoordinator dialogCoordinator, ILoggerFactory loggerFactory)
+            : base(dialogCoordinator, loggerFactory.CreateLogger<AppViewModel>())
         {
             _booksAppService = booksAppService;
         }
 
         public MainWindowViewModel()
+            : base(DialogCoordinator.Instance)
         { } // for design-time
 
         public ObservableRangeCollection<BookDto> Books
@@ -34,7 +38,7 @@ namespace Acme.BookStore.Wpf.ViewModels
         [ICommand(CanExecute = "GetIsNotBusy", AllowConcurrentExecutions = true)]
         public async Task LoadDataAsync()
         {
-            try
+            await SetBusyAsync(async () =>
             {
                 if (_books.Count > 0) _books.Clear();
 
@@ -44,11 +48,8 @@ namespace Acme.BookStore.Wpf.ViewModels
                 {
                     _books.Add(bookDetails);
                 }
-            }
-            catch (System.Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
+                throw new System.Exception("test");
+            });
         }
     }
 }

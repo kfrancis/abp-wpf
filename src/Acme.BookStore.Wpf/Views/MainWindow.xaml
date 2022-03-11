@@ -5,7 +5,11 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                  mc:Ignorable="d"
+                 WindowStartupLocation="CenterScreen"
+                 ResizeMode="CanResizeWithGrip"
+                 Dialog:DialogParticipation.Register="{Binding}"
         d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel Orientation="Vertical">

@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview2" />
         <PackageReference Include="MahApps.Metro" Version="2.4.9" />
         <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
