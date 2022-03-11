@@ -14,11 +14,10 @@ using Volo.Abp.Validation.Localization;
 namespace Acme.BookStore;
 
 [DependsOn(
-    typeof(AbpTestBaseModule),
     typeof(BookStoreWpfModule),
     typeof(BookStoreApplicationTestModule)
 )]
-public class BookStoreWebTestModule : AbpModule
+public class BookStoreWpfTestModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
