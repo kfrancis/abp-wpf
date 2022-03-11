@@ -17,6 +17,8 @@ namespace Acme.BookStore.Wpf.ViewModels
         private readonly ILogger<AppViewModel> _logger;
         private readonly IStringLocalizer<BookStoreResource> _localizer;
 
+        public IDialogCoordinator DialogCoordinator => _dialogCoordinator;
+
         protected AppViewModel(IDialogCoordinator dialogCoordinator, ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer)
         {
             _dialogCoordinator = dialogCoordinator;

@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Acme.BookStore.Wpf.Views;
@@ -39,6 +40,7 @@ public partial class App : Application
             .WriteTo.Async(c => c.File("Logs/logs.txt"))
             .CreateLogger();
 
+            var shouldContinue = true;
             try
             {
                 Log.Information("Starting WPF host.");
@@ -53,6 +55,7 @@ public partial class App : Application
             }
             catch (Exception ex)
             {
+                shouldContinue = false;
                 Log.Fatal(ex, "Host terminated unexpectedly!");
             }
 
@@ -61,10 +64,12 @@ public partial class App : Application
             //to create and show the main window
             this.Dispatcher.Invoke(() =>
             {
-                _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
+                if (shouldContinue)
+                    _abpApplication.Services.GetRequiredService<MainWindow>()?.Show();
+
                 splashScreen.Close();
             });
-        });
+        }, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
     }
 
     protected override async void OnExit(ExitEventArgs e)

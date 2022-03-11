@@ -14,7 +14,7 @@
         Title="{Binding Title}" Height="450" Width="800">
     <StackPanel Orientation="Vertical">
         <Button Content="Load" Command="{Binding LoadDataCommand}" />
-        <DataGrid ItemsSource="{Binding Books}">
+        <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}"
