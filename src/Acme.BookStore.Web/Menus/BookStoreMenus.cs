@@ -1,4 +1,4 @@
-﻿namespace Acme.BookStore.Web.Menus;
+namespace Acme.BookStore.Web.Menus;
 
 public class BookStoreMenus
 {
@@ -6,5 +6,5 @@ public class BookStoreMenus
     public const string Home = Prefix + ".Home";
 
     //Add your menu items here...
-
+    public const string Books = Prefix + ".Books";
 }

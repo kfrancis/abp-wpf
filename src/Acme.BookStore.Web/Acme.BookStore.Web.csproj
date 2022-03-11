@@ -22,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Books\CreateModal.cshtml" />
+    <None Include="Pages\Books\EditModal.cshtml" />
+    <None Include="Pages\Books\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Pages\**\*.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

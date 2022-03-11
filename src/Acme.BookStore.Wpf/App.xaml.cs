@@ -1,5 +1,6 @@
 using System;
 using System.Windows;
+using Acme.BookStore.Wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;

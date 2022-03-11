@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using MvvmHelpers;
 using Volo.Abp.DependencyInjection;
 
@@ -34,7 +35,9 @@ namespace Acme.BookStore.Wpf.ViewModels
             IsBusy = true;
             try
             {
-                await func();
+                await Dispatcher.CurrentDispatcher.InvokeAsync(async () => {
+                    await func();
+                });
             }
             finally
             {
