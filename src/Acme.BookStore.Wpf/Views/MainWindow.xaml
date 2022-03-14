@@ -1,34 +1,42 @@
 <mah:MetroWindow x:Class="Acme.BookStore.Wpf.Views.MainWindow"
-                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
-                 xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                 mc:Ignorable="d"
-                 WindowStartupLocation="CenterScreen"
-                 ResizeMode="CanResizeWithGrip"
-                 Dialog:DialogParticipation.Register="{Binding}"
-        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
-        <Button Content="Load" Command="{Binding LoadDataCommand}" />
-        <DataGrid ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
+                xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                WindowTransitionsEnabled="False"
+                Style="{DynamicResource MaterialDesignWindow}"
+                FontFamily="{DynamicResource MahApps.Fonts.Family.Window.Title}"
+                mc:Ignorable="d"
+                WindowStartupLocation="CenterScreen"
+                ResizeMode="CanResizeWithGrip"
+                Dialog:DialogParticipation.Register="{Binding}"
+                d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
+                Title="{Binding Title}" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button Content="Load" Command="{Binding LoadDataCommand}" />
+            <DataGrid ItemsSource="{Binding Books}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}"
                                     Width="Auto" />
-                <DataGridTextColumn Header="Type"
+                    <DataGridTextColumn Header="Type"
                     Binding="{Binding Type}"
                     Width="Auto" />
-                <DataGridTextColumn Header="Price"
+                    <DataGridTextColumn Header="Price"
                     Binding="{Binding Price}"
                     Width="Auto" />
-                <DataGridTextColumn Header="Publish Date"
+                    <DataGridTextColumn Header="Publish Date"
                     Binding="{Binding PublishDate}"
                     Width="Auto" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <materialDesign:Snackbar MessageQueue="{Binding TheSnackbarMessageQueue}" x:Name="MainSnackbar" />
+    </Grid>
 </mah:MetroWindow>

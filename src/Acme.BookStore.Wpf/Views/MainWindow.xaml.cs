@@ -1,3 +1,4 @@
+using System.Windows;
 using Acme.BookStore.Wpf.ViewModels;
 using MahApps.Metro.Controls;
 

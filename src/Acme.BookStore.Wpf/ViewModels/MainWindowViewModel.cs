@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
 using Acme.BookStore.Localization;
+using Acme.BookStore.Wpf.Services;
 using Acme.BookStore.Wpf.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MahApps.Metro.Controls.Dialogs;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using MvvmHelpers;
@@ -16,23 +18,28 @@ namespace Acme.BookStore.Wpf.ViewModels
         private readonly IBooksAppService _booksAppService;
         private readonly ILoggerFactory _loggerFactory;
         private readonly IStringLocalizer<BookStoreResource> _localizer;
+        private readonly ISnackbarService _snackbarService;
         private ObservableRangeCollection<BookDto> _books;
 
         public MainWindowViewModel(IBooksAppService booksAppService,
                                    IDialogCoordinator dialogCoordinator,
                                    ILoggerFactory loggerFactory,
-                                   IStringLocalizer<BookStoreResource> localizer)
+                                   IStringLocalizer<BookStoreResource> localizer,
+                                   ISnackbarService snackbarService)
             : base(dialogCoordinator, loggerFactory.CreateLogger<AppViewModel>(), localizer)
         {
             _booksAppService = booksAppService;
             _loggerFactory = loggerFactory;
             _localizer = localizer;
+            _snackbarService = snackbarService;
             Title = localizer["Main"];
         }
 
         public MainWindowViewModel()
             : base(MahApps.Metro.Controls.Dialogs.DialogCoordinator.Instance)
         { } // for design-time
+
+        public ISnackbarMessageQueue TheSnackbarMessageQueue => _snackbarService.TheSnackbarMessageQueue;
 
         public ObservableRangeCollection<BookDto> Books
         {
@@ -43,8 +50,8 @@ namespace Acme.BookStore.Wpf.ViewModels
             }
         }
 
-        [ObservableProperty()]
-        public BookDto _selectedItem;
+        //[ObservableProperty()]
+        //public BookDto _selectedItem;
 
         public bool GetIsNotBusy() => IsNotBusy;
 
@@ -61,6 +68,8 @@ namespace Acme.BookStore.Wpf.ViewModels
                 {
                     _books.Add(bookDetails);
                 }
+
+                _snackbarService.Enqueue("Done!");
             });
         }
 
