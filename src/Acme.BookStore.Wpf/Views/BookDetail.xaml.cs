@@ -1,14 +1,16 @@
-using MahApps.Metro.Controls.Dialogs;
+using System.Windows.Controls;
+using Acme.BookStore.Wpf.ViewModels;
 
 namespace Acme.BookStore.Wpf.Views
 {
     /// <summary>
     /// Interaction logic for BookDetail.xaml
     /// </summary>
-    public partial class BookDetail : CustomDialog, IAppView
+    public partial class BookDetail : UserControl, IAppView
     {
-        public BookDetail()
+        public BookDetail(BookDetailViewModel viewModel)
         {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

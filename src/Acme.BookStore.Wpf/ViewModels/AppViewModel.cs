@@ -1,9 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 using Acme.BookStore.Localization;
-using MahApps.Metro.Controls.Dialogs;
+//using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using MvvmHelpers;
@@ -13,23 +12,28 @@ namespace Acme.BookStore.Wpf.ViewModels
 {
     public abstract class AppViewModel : BaseViewModel, ITransientDependency
     {
-        private readonly IDialogCoordinator _dialogCoordinator;
+        //private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ILogger<AppViewModel> _logger;
         private readonly IStringLocalizer<BookStoreResource> _localizer;
 
-        public IDialogCoordinator DialogCoordinator => _dialogCoordinator;
+        //public IDialogCoordinator DialogCoordinator => _dialogCoordinator;
 
-        protected AppViewModel(IDialogCoordinator dialogCoordinator, ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer)
+        protected AppViewModel(ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer)
         {
-            _dialogCoordinator = dialogCoordinator;
+            //_dialogCoordinator = dialogCoordinator;
             _logger = logger;
             _localizer = localizer;
         }
 
-        protected AppViewModel(IDialogCoordinator dialogCoordinator)
+        protected AppViewModel()
         {
-            _dialogCoordinator = dialogCoordinator;
+
         }
+
+        //protected AppViewModel(IDialogCoordinator dialogCoordinator)
+        //{
+        //    _dialogCoordinator = dialogCoordinator;
+        //}
 
         public virtual async Task InitializeAsync(object navigationData)
         {
@@ -53,10 +57,10 @@ namespace Acme.BookStore.Wpf.ViewModels
             _logger?.LogException(ex.Demystify());
             if (shouldDisplay)
             {
-                Dispatcher.CurrentDispatcher.Invoke(() =>
-                {
-                    _ = Task.Run(() => _dialogCoordinator.ShowMessageAsync(this, _localizer?["Error"] ?? "Error", (_localizer?["Failed"] ?? "Failed") + $": {ex.ToStringDemystified()}"));
-                });
+                //Dispatcher.CurrentDispatcher.Invoke(() =>
+                //{
+                //    _ = Task.Run(() => _dialogCoordinator.ShowMessageAsync(this, _localizer?["Error"] ?? "Error", (_localizer?["Failed"] ?? "Failed") + $": {ex.ToStringDemystified()}"));
+                //});
             }
 
             return shouldCatch;

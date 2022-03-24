@@ -1,17 +1,14 @@
-<dialog:CustomDialog x:Class="Acme.BookStore.Wpf.Views.BookDetail"
+<UserControl x:Class="Acme.BookStore.Wpf.Views.BookDetail"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Acme.BookStore.Wpf.Views"
-        xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
         xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
-        dialog:DialogParticipation.Register="{Binding}"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=viewModels:BookDetailViewModel, IsDesignTimeCreatable=True}"
-        Title="{Binding Title}" DialogContentWidth="800">
+        d:DataContext="{d:DesignInstance Type=viewModels:BookDetailViewModel, IsDesignTimeCreatable=True}">
     <Grid>
         <TextBlock Text="123"></TextBlock>
         <Button Content="Close" Command="{Binding CloseCommand}"></Button>
     </Grid>
-</dialog:CustomDialog>
+</UserControl>

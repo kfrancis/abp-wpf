@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using MaterialDesignThemes.Wpf;
+//using MaterialDesignThemes.Wpf;
 using Volo.Abp.DependencyInjection;
 
 namespace Acme.BookStore.Wpf.Services
 {
     public interface ISnackbarService
     {
-        ISnackbarMessageQueue TheSnackbarMessageQueue { get; }
+        //ISnackbarMessageQueue TheSnackbarMessageQueue { get; }
 
         void Enqueue(object content, object actionContent, Action actionHandler, bool promote = false);
 
@@ -32,11 +32,11 @@ namespace Acme.BookStore.Wpf.Services
     {
         private bool _disposedValue;
 
-        public ISnackbarMessageQueue TheSnackbarMessageQueue { get; } = new SnackbarMessageQueue(TimeSpan.FromSeconds(4));
+        //public ISnackbarMessageQueue TheSnackbarMessageQueue { get; } = new SnackbarMessageQueue(TimeSpan.FromSeconds(4));
 
         public void Enqueue(object content, object actionContent, Action actionHandler, bool promote = false)
         {
-            TheSnackbarMessageQueue.Enqueue(content, actionContent, actionHandler, promote);
+            //TheSnackbarMessageQueue.Enqueue(content, actionContent, actionHandler, promote);
         }
 
         public void Enqueue(
@@ -47,13 +47,13 @@ namespace Acme.BookStore.Wpf.Services
             bool promote,
             bool neverConsiderToBeDuplicate)
         {
-            TheSnackbarMessageQueue.Enqueue(
-                content,
-                actionContent,
-                actionHandler,
-                actionArgument,
-                promote,
-                neverConsiderToBeDuplicate);
+            //TheSnackbarMessageQueue.Enqueue(
+            //    content,
+            //    actionContent,
+            //    actionHandler,
+            //    actionArgument,
+            //    promote,
+            //    neverConsiderToBeDuplicate);
         }
 
         public void Enqueue(object content)
@@ -62,7 +62,7 @@ namespace Acme.BookStore.Wpf.Services
             {
                 if (Application.Current.MainWindow?.WindowState != WindowState.Minimized)
                 {
-                    TheSnackbarMessageQueue.Enqueue(content);
+                    //TheSnackbarMessageQueue.Enqueue(content);
                 }
             }));
         }
@@ -73,7 +73,7 @@ namespace Acme.BookStore.Wpf.Services
             {
                 if (Application.Current.MainWindow?.WindowState != WindowState.Minimized)
                 {
-                    TheSnackbarMessageQueue.Enqueue(content, "OK", (obj) => { }, () => { }, true, true, TimeSpan.FromSeconds(20));
+                    //TheSnackbarMessageQueue.Enqueue(content, "OK", (obj) => { }, () => { }, true, true, TimeSpan.FromSeconds(20));
                 }
             }));
         }
@@ -85,7 +85,7 @@ namespace Acme.BookStore.Wpf.Services
                 if (disposing)
                 {
                     // TODO: dispose managed state (managed objects)
-                    ((SnackbarMessageQueue)TheSnackbarMessageQueue)?.Dispose();
+                    //((SnackbarMessageQueue)TheSnackbarMessageQueue)?.Dispose();
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer

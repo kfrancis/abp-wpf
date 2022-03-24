@@ -1,0 +1,34 @@
+<Page x:Class="Acme.BookStore.Wpf.Views.BookIndex"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Acme.BookStore.Wpf.Views"
+      xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
+      mc:Ignorable="d"
+      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Style="{StaticResource UiPageScrollable}"
+      d:DataContext="{d:DesignInstance Type=viewModels:BookIndexViewModel, IsDesignTimeCreatable=True}"
+      Title="BookIndex">
+
+    <StackPanel Orientation="Vertical" >
+        <Button Content="Load" Command="{Binding LoadDataCommand}" />
+        <DataGrid ItemsSource="{Binding Books, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}"
+                                    Width="Auto" />
+                <DataGridTextColumn Header="Type"
+                    Binding="{Binding Type}"
+                    Width="Auto" />
+                <DataGridTextColumn Header="Price"
+                    Binding="{Binding Price}"
+                    Width="Auto" />
+                <DataGridTextColumn Header="Publish Date"
+                    Binding="{Binding PublishDate}"
+                    Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Page>

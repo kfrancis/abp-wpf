@@ -1,6 +1,7 @@
 using Acme.BookStore.EntityFrameworkCore;
-using MahApps.Metro.Controls.Dialogs;
+//using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.BackgroundWorkers;
@@ -15,9 +16,10 @@ public class BookStoreWpfModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        Configure<AbpAuditingOptions>(options => options.IsEnabled = false);
         Configure<AbpBackgroundJobOptions>(options => options.IsJobExecutionEnabled = false);
         Configure<AbpBackgroundWorkerOptions>(options => options.IsEnabled = false);
 
-        context.Services.AddSingleton<IDialogCoordinator>(DialogCoordinator.Instance);
+        //context.Services.AddSingleton<IDialogCoordinator>(DialogCoordinator.Instance);
     }
 }
