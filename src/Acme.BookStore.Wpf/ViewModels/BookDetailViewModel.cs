@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Acme.BookStore.Localization;
+using Acme.BookStore.Wpf.Core.Threading;
 using CommunityToolkit.Mvvm.Input;
 //using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Localization;
@@ -20,8 +21,9 @@ namespace Acme.BookStore.Wpf.ViewModels
 
         public BookDetailViewModel(ILogger<AppViewModel> logger,
                                    IStringLocalizer<BookStoreResource> localizer,
+                                   IDispatcher dispatcher,
                                    Func<Task> closeAction = null)
-            : base(logger, localizer)
+            : base(logger, localizer, dispatcher)
         {
             _closeAction = closeAction;
         }

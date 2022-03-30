@@ -15,54 +15,47 @@ namespace Acme.BookStore.Wpf.ViewModels
 {
     public partial class MainWindowViewModel : AppViewModel
     {
-        private readonly IBooksAppService _booksAppService;
-        private readonly ILoggerFactory _loggerFactory;
+        private readonly ILogger<MainWindowViewModel> _log;
         private readonly IStringLocalizer<BookStoreResource> _localizer;
         private readonly ISnackbarService _snackbarService;
-
-        public List<IDispatcher> Dispatchers { get; }
-
-
 
         public MainWindowViewModel(IDispatcher dispatcher,
                                    ILoggerFactory loggerFactory,
                                    IStringLocalizer<BookStoreResource> localizer,
                                    ISnackbarService snackbarService)
-            : base(loggerFactory.CreateLogger<AppViewModel>(), localizer)
+            : base(loggerFactory.CreateLogger<AppViewModel>(), localizer, dispatcher)
         {
-            _loggerFactory = loggerFactory;
+            _log = loggerFactory.CreateLogger<MainWindowViewModel>();
             _localizer = localizer;
             _snackbarService = snackbarService;
-
-            Dispatchers = new List<IDispatcher>() { dispatcher };
 
             OpenSnackbar = new AsyncCommand<Snackbar>(OpenSnackbarAsync, o => IsNotBusy);
             CloseSnackbar = new AsyncCommand<Snackbar>(CloseSnackbarAsync, o => IsNotBusy);
 
             Title = localizer["Main"];
+            Subtitle = localizer["Main_Description"];
+            Icon = "Book20";
         }
 
         public MainWindowViewModel()
             : base()
         { } // for design-time
 
-        //public ISnackbarMessageQueue TheSnackbarMessageQueue => _snackbarService.TheSnackbarMessageQueue;
-
         public IAsyncCommand<Snackbar> OpenSnackbar { get; private set; }
         public IAsyncCommand<Snackbar> CloseSnackbar { get; private set; }
 
         public bool GetIsNotBusy() => IsNotBusy;
 
-
         public async Task OpenSnackbarAsync(Snackbar sender)
         {
-
+            _log.LogInformation("Snackbar opened");
+            await Task.CompletedTask;
         }
-
 
         public async Task CloseSnackbarAsync(Snackbar sender)
         {
-
+            _log.LogInformation("Snackbar closed");
+            await Task.CompletedTask;
         }
     }
 }

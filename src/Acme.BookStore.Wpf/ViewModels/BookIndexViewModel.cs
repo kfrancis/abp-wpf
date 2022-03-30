@@ -29,12 +29,12 @@ namespace Acme.BookStore.Wpf.ViewModels
                                   IBooksAppService bookAppService,
                                   IDispatcher dispatcher,
                                   ISnackbarService snackbarService,
-                                  IStringLocalizer<BookStoreResource> localizer) : base(logger, localizer)
+                                  IStringLocalizer<BookStoreResource> localizer)
+            : base(logger, localizer, dispatcher)
         {
             _logger = logger;
             _bookAppService = bookAppService;
             _snackbarService = snackbarService;
-            Dispatchers = new List<IDispatcher>() { dispatcher };
             Title = localizer["Books"];
         }
         public ObservableRangeCollection<BookDto> Books
@@ -49,7 +49,6 @@ namespace Acme.BookStore.Wpf.ViewModels
                 SetProperty(ref _books, value);
             }
         }
-        public List<IDispatcher> Dispatchers { get; }
 
         public bool GetIsNotBusy() => IsNotBusy;
 

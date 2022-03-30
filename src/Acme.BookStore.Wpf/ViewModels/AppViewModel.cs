@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Acme.BookStore.Localization;
+using Acme.BookStore.Wpf.Core.Threading;
 //using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -12,28 +14,26 @@ namespace Acme.BookStore.Wpf.ViewModels
 {
     public abstract class AppViewModel : BaseViewModel, ITransientDependency
     {
-        //private readonly IDialogCoordinator _dialogCoordinator;
         private readonly ILogger<AppViewModel> _logger;
         private readonly IStringLocalizer<BookStoreResource> _localizer;
 
-        //public IDialogCoordinator DialogCoordinator => _dialogCoordinator;
+        public IStringLocalizer<BookStoreResource> L => _localizer;
 
-        protected AppViewModel(ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer)
+        public List<IDispatcher> Dispatchers { get; }
+
+        protected AppViewModel(ILogger<AppViewModel> logger, IStringLocalizer<BookStoreResource> localizer, IDispatcher dispatcher)
+            : this()
         {
-            //_dialogCoordinator = dialogCoordinator;
             _logger = logger;
             _localizer = localizer;
+
+            Dispatchers = new List<IDispatcher> { dispatcher };
         }
 
         protected AppViewModel()
         {
 
         }
-
-        //protected AppViewModel(IDialogCoordinator dialogCoordinator)
-        //{
-        //    _dialogCoordinator = dialogCoordinator;
-        //}
 
         public virtual async Task InitializeAsync(object navigationData)
         {

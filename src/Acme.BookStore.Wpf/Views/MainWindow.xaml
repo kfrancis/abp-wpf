@@ -6,7 +6,8 @@
                 xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
                 xmlns:views="clr-namespace:Acme.BookStore.Wpf.Views"
                 xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
-        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+                xmlns:converters="clr-namespace:Acme.BookStore.Wpf.Core.Converters"
+                xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
                 xmlns:wpfuiCommon="clr-namespace:WPFUI.Common;assembly=WPFUI"
                 mc:Ignorable="d"
                 WindowStartupLocation="CenterScreen"
@@ -15,12 +16,15 @@
                 d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
                 Height="450" Width="800">
     <Grid>
+
+        <Grid.Resources>
+            <converters:IconNameToIconConverter x:Key="IconNameToIconConverter" />
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-
 
         <Grid x:Name="RootGrid" Grid.Row="1" Margin="12,6,0,12">
             <Grid.RowDefinitions>
@@ -49,8 +53,8 @@
                     Grid.Column="1"
                     Margin="12,0,0,0"
                     VerticalAlignment="Center">
-                    <TextBlock FontWeight="Medium" Text="WPF UI" />
-                    <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="Fluent Design System" />
+                    <TextBlock FontWeight="Medium" Text="{Binding Title}" />
+                    <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Subtitle}" />
                 </StackPanel>
             </Grid>
 
@@ -61,8 +65,8 @@
                                     Frame="{Binding ElementName=RootFrame}">
                 <wpfui:NavigationFluent.Items>
                     <wpfui:NavigationItem
-                        Content="Books"
-                        Icon="Book20"
+                        Content="{Binding Path=L[Books]}"
+                        Icon="{Binding Icon, Converter={StaticResource IconNameToIconConverter}}"
                         Tag="books"
                         Type="{x:Type views:BookIndex}" />
                 </wpfui:NavigationFluent.Items>
