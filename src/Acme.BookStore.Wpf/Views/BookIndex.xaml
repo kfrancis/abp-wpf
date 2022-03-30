@@ -5,32 +5,50 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Acme.BookStore.Wpf.Views"
       xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
+      xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:converters="clr-namespace:Acme.BookStore.Wpf.Core.Converters"
       mc:Ignorable="d"
       xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
       d:DesignHeight="450" d:DesignWidth="800"
       Style="{StaticResource UiPageScrollable}"
       d:DataContext="{d:DesignInstance Type=viewModels:BookIndexViewModel, IsDesignTimeCreatable=True}"
       Title="BookIndex">
+    <Behaviors:Interaction.Triggers>
+        <Behaviors:EventTrigger EventName="Loaded">
+            <Behaviors:InvokeCommandAction Command="{Binding InitialCommand}"/>
+        </Behaviors:EventTrigger>
+    </Behaviors:Interaction.Triggers>
     <Grid Margin="0,0,18,18">
-        <StackPanel Orientation="Vertical" >
-        <wpfui:Button Content="{Binding Path=L[Refresh]}" Appearance="Secondary" Icon="ArrowDownload24" Command="{Binding LoadDataCommand}" />
-        <DataGrid ItemsSource="{Binding Books, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"
-                                    Binding="{Binding Name}"
-                                    Width="Auto" />
-                <DataGridTextColumn Header="Type"
-                    Binding="{Binding Type}"
-                    Width="Auto" />
-                <DataGridTextColumn Header="Price"
-                    Binding="{Binding Price}"
-                    Width="Auto" />
-                <DataGridTextColumn Header="Publish Date"
-                    Binding="{Binding PublishDate}"
-                    Width="Auto" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+        <Grid.Resources>
+            <converters:IndexOfConverter x:Key="indexOfConverter" />
+        </Grid.Resources>
+        
+        <ItemsControl ItemsSource="{Binding Books, Mode=TwoWay}" Margin="0,0,4,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <wpfui:Card Margin="4,0,4,0" Grid.Row="0">
+                        <Grid.Column>
+                            <MultiBinding Converter="{StaticResource indexOfConverter}">
+                                <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}" />
+                                <Binding Path="."/>
+                            </MultiBinding>
+                        </Grid.Column>
+                        <StackPanel>
+                            <wpfui:Icon Margin="14" VerticalAlignment="Center" Glyph="Accessibility48" />
+                            <TextBlock FontSize="16" Text="{Binding Name}" Grid.Row="0"/>
+                            <TextBlock FontSize="12" Grid.Row="0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Price}"/>
+                            <wpfui:Rating Value="4" Margin="0,0,0,40" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <TextBlock FontSize="12" Grid.Row="0" FontWeight="Black" Text="{Binding PublishDate}"/>
+                        </StackPanel>
+                    </wpfui:Card>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
-    
+
 </Page>

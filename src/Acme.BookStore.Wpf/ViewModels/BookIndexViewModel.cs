@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
 using Acme.BookStore.Localization;
@@ -37,11 +37,16 @@ namespace Acme.BookStore.Wpf.ViewModels
             _snackbarService = snackbarService;
             Title = localizer["Books"];
         }
+
         public ObservableRangeCollection<BookDto> Books
         {
             get
             {
-                if (_books == null) _books = new ObservableRangeCollection<BookDto>();
+                if (_books == null)
+                {
+                    _books = new ObservableRangeCollection<BookDto>();
+                }
+
                 return _books;
             }
             set
@@ -57,7 +62,6 @@ namespace Acme.BookStore.Wpf.ViewModels
         {
             await SetBusyAsync(async () =>
             {
-                if (_books == null) _books = new ObservableRangeCollection<BookDto>();
                 if (_books != null && _books.Count > 0) _books.Clear();
 
                 var pagedResults = await _bookAppService.GetListAsync(new GetBooksInput());
@@ -69,6 +73,12 @@ namespace Acme.BookStore.Wpf.ViewModels
                 _logger.LogInformation($"Found {_books.Count} books.");
                 _snackbarService.Enqueue("Done!");
             });
+        }
+
+        [ICommand]
+        public async Task InitialAsync()
+        {
+            await LoadDataAsync();
         }
 
         [ICommand]

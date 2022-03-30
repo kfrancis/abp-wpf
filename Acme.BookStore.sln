@@ -41,13 +41,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		common.props = common.props
+		example.png = example.png
 		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf", "src\Acme.BookStore.Wpf\Acme.BookStore.Wpf.csproj", "{66FFAA45-2733-480C-A85C-D242ADD8225A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.BookStore.Wpf.Tests", "test\Acme.BookStore.Wpf.Tests\Acme.BookStore.Wpf.Tests.csproj", "{2F4BD98D-6460-4221-AF34-4E76F98E852C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf.Tests", "test\Acme.BookStore.Wpf.Tests\Acme.BookStore.Wpf.Tests.csproj", "{2F4BD98D-6460-4221-AF34-4E76F98E852C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

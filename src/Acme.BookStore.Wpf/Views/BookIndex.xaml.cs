@@ -22,15 +22,28 @@ namespace Acme.BookStore.Wpf.Views
     /// </summary>
     public partial class BookIndex : Page, ISingletonDependency
     {
+        private readonly BookIndexViewModel _viewModel;
+
         public BookIndex()
         {
+            WPFUI.Appearance.Theme.Set(
+  WPFUI.Appearance.ThemeType.Dark,     // Theme type
+  WPFUI.Appearance.BackgroundType.Mica, // Background type
+  true                                  // Whether to change accents automatically
+);
             InitializeComponent();
         }
 
         public BookIndex(BookIndexViewModel viewModel)
         {
+            WPFUI.Appearance.Theme.Set(
+  WPFUI.Appearance.ThemeType.Dark,     // Theme type
+  WPFUI.Appearance.BackgroundType.Mica, // Background type
+  true                                  // Whether to change accents automatically
+);
             DataContext = viewModel;
             InitializeComponent();
+            _viewModel = viewModel;
         }
     }
 }
