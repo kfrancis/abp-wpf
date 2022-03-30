@@ -19,11 +19,11 @@ namespace Acme.BookStore.Wpf.Tests.Views
     public class BookIndex_Tests : BookStoreWpfTestBase
     {
         private BookIndexViewModel _viewModel;
-        private ILogger<BookIndexViewModel> _logger;
+        private readonly ILogger<BookIndexViewModel> _logger;
         private IBooksAppService _bookAppService;
-        private IDispatcher _dispatcher;
+        private readonly IDispatcher _dispatcher;
         private ISnackbarService _snackbarService;
-        private IStringLocalizer<BookStoreResource> _localizer;
+        private readonly IStringLocalizer<BookStoreResource> _localizer;
 
         public BookIndex_Tests()
         {
@@ -32,6 +32,7 @@ namespace Acme.BookStore.Wpf.Tests.Views
             _dispatcher = GetRequiredService<IDispatcher>();
             _snackbarService = GetRequiredService<ISnackbarService>();
             _localizer = GetRequiredService<IStringLocalizer<BookStoreResource>>();
+            _viewModel = new BookIndexViewModel();
         }
 
         protected override void AfterAddApplication(IServiceCollection services)
