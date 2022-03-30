@@ -22,6 +22,11 @@ namespace Acme.BookStore.Wpf.Views
     /// </summary>
     public partial class BookIndex : Page, ISingletonDependency
     {
+        public BookIndex()
+        {
+            InitializeComponent();
+        }
+
         public BookIndex(BookIndexViewModel viewModel)
         {
             DataContext = viewModel;

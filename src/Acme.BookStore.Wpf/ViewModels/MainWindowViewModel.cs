@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
 using WPFUI.Controls;
+using WPFUI.Controls.Interfaces;
 
 namespace Acme.BookStore.Wpf.ViewModels
 {
@@ -34,15 +36,22 @@ namespace Acme.BookStore.Wpf.ViewModels
 
             Title = localizer["Main"];
             Subtitle = localizer["Main_Description"];
-            Icon = "Book20";
+            Icon = Enum.GetName(WPFUI.Common.Icon.Book20);
         }
 
+        // for design-time
         public MainWindowViewModel()
             : base()
-        { } // for design-time
+        {
+            Icon = Enum.GetName(WPFUI.Common.Icon.Book20);
+            Title = "Title";
+            Subtitle = "Subtitle";
+        }
 
         public IAsyncCommand<Snackbar> OpenSnackbar { get; private set; }
         public IAsyncCommand<Snackbar> CloseSnackbar { get; private set; }
+
+        public IAsyncCommand Navigated { get; private set; }
 
         public bool GetIsNotBusy() => IsNotBusy;
 

@@ -11,9 +11,9 @@
       Style="{StaticResource UiPageScrollable}"
       d:DataContext="{d:DesignInstance Type=viewModels:BookIndexViewModel, IsDesignTimeCreatable=True}"
       Title="BookIndex">
-
-    <StackPanel Orientation="Vertical" >
-        <Button Content="Load" Command="{Binding LoadDataCommand}" />
+    <Grid Margin="0,0,18,18">
+        <StackPanel Orientation="Vertical" >
+        <wpfui:Button Content="{Binding Path=L[Refresh]}" Appearance="Secondary" Icon="ArrowDownload24" Command="{Binding LoadDataCommand}" />
         <DataGrid ItemsSource="{Binding Books, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
@@ -31,4 +31,6 @@
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
+    </Grid>
+    
 </Page>

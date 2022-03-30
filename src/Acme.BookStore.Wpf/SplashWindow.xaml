@@ -4,18 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Acme.BookStore.Wpf"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        Height="30"
-        Width="200">
-    <Grid>
-        <ProgressBar IsIndeterminate="True" />
-        <TextBlock HorizontalAlignment="Center"
-                   VerticalAlignment="Center">Loading...</TextBlock>
-    </Grid>
+        Style="{StaticResource UiWindow}"
+        Width="200"
+        Height="50">
+    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+        <wpfui:ProgressRing IsIndeterminate="True" />
+        <TextBlock
+        Margin="0,12,0,0"
+        FontSize="16"
+        FontWeight="Medium"
+        Text="Preparing app for you."
+        TextAlignment="Center"
+        TextWrapping="Wrap" />
+    </StackPanel>
 </Window>

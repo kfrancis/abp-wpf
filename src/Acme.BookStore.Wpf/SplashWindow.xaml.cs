@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +21,12 @@ namespace Acme.BookStore.Wpf
     {
         public SplashWindow()
         {
+            WPFUI.Appearance.Theme.Set(
+              WPFUI.Appearance.ThemeType.Dark,     // Theme type
+              WPFUI.Appearance.BackgroundType.Mica, // Background type
+              true                                  // Whether to change accents automatically
+            );
+
             InitializeComponent();
         }
     }
