@@ -82,3 +82,4 @@ Check out the project `Acme.BookStore.Wpf.Tests` which is an adaptation of the W
 
 - [Documentation](https://docs.abp.io/en/abp/latest/Tutorials/Part-1?UI=MVC&DB=EF)
 - [Tutorial Source](https://github.com/abpframework/abp-samples/tree/master/BookStore-Mvc-EfCore)
+- [Associated Community Article](article.md)
