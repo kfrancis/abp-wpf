@@ -40,6 +40,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A85961C-8E32-4EEF-9178-D2291CC87A46}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		article.md = article.md
 		common.props = common.props
 		example.png = example.png
 		NuGet.Config = NuGet.Config
@@ -49,6 +50,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf", "src\Acme.BookStore.Wpf\Acme.BookStore.Wpf.csproj", "{66FFAA45-2733-480C-A85C-D242ADD8225A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf.Tests", "test\Acme.BookStore.Wpf.Tests\Acme.BookStore.Wpf.Tests.csproj", "{2F4BD98D-6460-4221-AF34-4E76F98E852C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{EC68E528-7D67-452D-9E7C-AE217419F48C}"
+	ProjectSection(SolutionItems) = preProject
+		images\22-04-d679t-1649269587.png = images\22-04-d679t-1649269587.png
+		images\22-04-msbrw-1649269264.png = images\22-04-msbrw-1649269264.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,6 +153,7 @@ Global
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{66FFAA45-2733-480C-A85C-D242ADD8225A} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
+		{EC68E528-7D67-452D-9E7C-AE217419F48C} = {5A85961C-8E32-4EEF-9178-D2291CC87A46}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

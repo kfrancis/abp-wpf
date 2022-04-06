@@ -10,7 +10,7 @@ An abp.io BookStore sample including a more complete wpf example using mvvm sour
 - [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm)
 
 ## :computer: Screenshot
-![example](example.png)
+![example](images/example.png)
 
 ## Interesting Bits
 

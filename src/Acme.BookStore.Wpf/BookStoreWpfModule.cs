@@ -1,3 +1,4 @@
+using Acme.BookStore.BackgroundJobs;
 using Acme.BookStore.EntityFrameworkCore;
 //using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,9 +18,7 @@ public class BookStoreWpfModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpAuditingOptions>(options => options.IsEnabled = false);
-        Configure<AbpBackgroundJobOptions>(options => options.IsJobExecutionEnabled = false);
-        Configure<AbpBackgroundWorkerOptions>(options => options.IsEnabled = false);
-
-        //context.Services.AddSingleton<IDialogCoordinator>(DialogCoordinator.Instance);
+        Configure<AbpBackgroundJobOptions>(options => options.IsJobExecutionEnabled = BackgroundJobConsts.IsEnabled);
+        Configure<AbpBackgroundWorkerOptions>(options => options.IsEnabled = BackgroundJobConsts.IsEnabled);
     }
 }
