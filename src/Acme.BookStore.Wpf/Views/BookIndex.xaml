@@ -4,13 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Acme.BookStore.Wpf.Views"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
       xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:converters="clr-namespace:Acme.BookStore.Wpf.Core.Converters"
       mc:Ignorable="d"
-      xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
       d:DesignHeight="450" d:DesignWidth="800"
-      Style="{StaticResource UiPageScrollable}"
       d:DataContext="{d:DesignInstance Type=viewModels:BookIndexViewModel, IsDesignTimeCreatable=True}"
       Title="BookIndex">
     <Behaviors:Interaction.Triggers>
@@ -26,7 +25,7 @@
         <ItemsControl ItemsSource="{Binding Books, Mode=TwoWay}" Margin="0,0,4,0">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <wpfui:Card Margin="4,0,4,0" Grid.Row="0">
+                    <ui:Card Margin="4,0,4,0" Grid.Row="0">
                         <Grid.Column>
                             <MultiBinding Converter="{StaticResource indexOfConverter}">
                                 <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}" />
@@ -34,13 +33,13 @@
                             </MultiBinding>
                         </Grid.Column>
                         <StackPanel>
-                            <wpfui:Icon Margin="14" VerticalAlignment="Center" Glyph="Accessibility48" />
+                            <!--<ui:FontIcon Margin="14" VerticalAlignment="Center" Glyph="" />-->
                             <TextBlock FontSize="16" Text="{Binding Name}" Grid.Row="0"/>
                             <TextBlock FontSize="12" Grid.Row="0" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Price}"/>
-                            <wpfui:Rating Value="4" Margin="0,0,0,40" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
+                            <ui:Rating Value="4" Margin="0,0,0,40" HorizontalAlignment="Left" FontSize="14" Foreground="{DynamicResource TextFillColorTertiaryBrush}"/>
                             <TextBlock FontSize="12" Grid.Row="0" FontWeight="Black" Text="{Binding PublishDate}"/>
                         </StackPanel>
-                    </wpfui:Card>
+                    </ui:Card>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>

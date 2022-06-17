@@ -5,14 +5,12 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:viewModels="clr-namespace:Acme.BookStore.Wpf.ViewModels"
                 xmlns:views="clr-namespace:Acme.BookStore.Wpf.Views"
-                xmlns:wpfui="clr-namespace:WPFUI.Controls;assembly=WPFUI"
                 xmlns:converters="clr-namespace:Acme.BookStore.Wpf.Core.Converters"
                 xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-                xmlns:wpfuiCommon="clr-namespace:WPFUI.Common;assembly=WPFUI"
                 mc:Ignorable="d"
-                WindowStartupLocation="CenterScreen"
+        xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    WindowStartupLocation="CenterScreen"
                 ResizeMode="CanResizeWithGrip"
-                Style="{StaticResource UiWindow}"
                 d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
                 Height="450" Width="800">
     <Grid>
@@ -20,7 +18,7 @@
         <Grid.Resources>
             <converters:IconNameToIconConverter x:Key="IconNameToIconConverter" />
         </Grid.Resources>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -54,7 +52,7 @@
                     Margin="12,0,0,0"
                     VerticalAlignment="Center">
                     <TextBlock FontWeight="Medium" Text="{Binding Title}" />
-                    <TextBlock Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding Subtitle}" />
+                    <TextBlock Text="{Binding Subtitle}" />
                 </StackPanel>
             </Grid>
 
@@ -68,8 +66,7 @@
                     <wpfui:NavigationItem
                         Content="{Binding Path=L[Books]}"
                         Icon="{Binding Icon, Converter={StaticResource IconNameToIconConverter}}"
-                        Tag="books"
-                        Type="{x:Type views:BookIndex}" />
+                        Tag="books" PageType="{x:Type views:BookIndex}" />
                 </wpfui:NavigationFluent.Items>
             </wpfui:NavigationFluent>
 
@@ -100,7 +97,7 @@
                 Opened="RootSnackbar_Opened"
                 Icon="PuzzlePiece24"
                 Message="Remember that the Heat Death of Universe is coming someday, no time to explain - let's go!"
-                Show="False"
+                IsShown="False"
                 ShowCloseButton="True"
                 Timeout="5000">
                 <Behaviors:Interaction.Triggers>
@@ -117,7 +114,7 @@
             x:Name="RootDialog"
             Grid.Row="0"
             Grid.RowSpan="2"
-            Show="False">
+            IsShown="False">
             <Grid>
                 <StackPanel>
                     <TextBlock FontWeight="Medium" Text="WPF UI" />
@@ -130,6 +127,6 @@
             </Grid>
         </wpfui:Dialog>
         <!--<materialDesign:Snackbar MessageQueue="{Binding TheSnackbarMessageQueue}" x:Name="MainSnackbar" />-->
-        <wpfui:TitleBar Title="{Binding Title}" x:Name="RootTitleBar" Grid.Row="0" ApplicationNavigation="True" UseSnapLayout="True" />
+        <wpfui:TitleBar Title="{Binding Title}" x:Name="RootTitleBar" Grid.Row="0" UseSnapLayout="True" />
     </Grid>
 </Window>

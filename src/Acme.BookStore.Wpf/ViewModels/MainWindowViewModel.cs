@@ -10,8 +10,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using MvvmHelpers.Commands;
 using MvvmHelpers.Interfaces;
-using WPFUI.Controls;
-using WPFUI.Controls.Interfaces;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace Acme.BookStore.Wpf.ViewModels
 {
@@ -36,14 +36,14 @@ namespace Acme.BookStore.Wpf.ViewModels
 
             Title = localizer["Main"];
             Subtitle = localizer["Main_Description"];
-            Icon = Enum.GetName(WPFUI.Common.Icon.Book20);
+            Icon = Enum.GetName(SymbolRegular.Book20);
         }
 
         // for design-time
         public MainWindowViewModel()
             : base()
         {
-            Icon = Enum.GetName(WPFUI.Common.Icon.Book20);
+            Icon = Enum.GetName(SymbolRegular.Book20);
             Title = "Title";
             Subtitle = "Subtitle";
         }

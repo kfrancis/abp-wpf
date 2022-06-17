@@ -1,19 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Acme.BookStore.Wpf.ViewModels;
 using Volo.Abp.DependencyInjection;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 
 namespace Acme.BookStore.Wpf.Views
 {
@@ -26,21 +15,21 @@ namespace Acme.BookStore.Wpf.Views
 
         public BookIndex()
         {
-            WPFUI.Appearance.Theme.Set(
-  WPFUI.Appearance.ThemeType.Dark,     // Theme type
-  WPFUI.Appearance.BackgroundType.Mica, // Background type
-  true                                  // Whether to change accents automatically
-);
+            Theme.Apply(
+                ThemeType.Dark,     // Theme type
+                BackgroundType.Mica, // Background type
+                true                                  // Whether to change accents automatically
+            );
             InitializeComponent();
         }
 
         public BookIndex(BookIndexViewModel viewModel)
         {
-            WPFUI.Appearance.Theme.Set(
-  WPFUI.Appearance.ThemeType.Dark,     // Theme type
-  WPFUI.Appearance.BackgroundType.Mica, // Background type
-  true                                  // Whether to change accents automatically
-);
+            Theme.Apply(
+              ThemeType.Dark,     // Theme type
+              BackgroundType.Mica, // Background type
+              true                                  // Whether to change accents automatically
+            );
             DataContext = viewModel;
             InitializeComponent();
             _viewModel = viewModel;

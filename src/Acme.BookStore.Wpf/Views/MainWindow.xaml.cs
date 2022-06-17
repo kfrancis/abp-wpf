@@ -1,7 +1,9 @@
 using System.Windows;
 using Acme.BookStore.Wpf.Core.Threading;
 using Acme.BookStore.Wpf.ViewModels;
-using WPFUI.Controls;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
+using Wpf.Ui.Controls.Interfaces;
 
 namespace Acme.BookStore.Wpf.Views;
 
@@ -16,9 +18,9 @@ public partial class MainWindow : Window, IAppView
     {
         _bookIndexViewModel = bookIndexViewModel;
 
-        WPFUI.Appearance.Theme.Set(
-          WPFUI.Appearance.ThemeType.Dark,     // Theme type
-          WPFUI.Appearance.BackgroundType.Mica, // Background type
+        Theme.Apply(
+          ThemeType.Dark,     // Theme type
+          BackgroundType.Mica, // Background type
           true                                  // Whether to change accents automatically
         );
 
@@ -29,7 +31,7 @@ public partial class MainWindow : Window, IAppView
         RootNavigation.Navigated += RootNavigation_Navigated;
         RootTitleBar.CloseActionOverride = CloseActionOverride;
 
-        WPFUI.Appearance.Theme.Changed += Theme_Changed;
+        Theme.Changed += Theme_Changed;
 
         viewModel.Dispatchers.RunOnUIThread(() =>
         {
@@ -37,22 +39,22 @@ public partial class MainWindow : Window, IAppView
         });
     }
 
-    private void RootNavigation_Navigated(WPFUI.Controls.Interfaces.INavigation navigation, WPFUI.Controls.Interfaces.INavigationItem current)
+    private void RootNavigation_Navigated(INavigation navigation, INavigationItem current)
     {
-        if (navigation.Current.Type == typeof(BookIndex))
+        if (navigation.Current.PageType == typeof(BookIndex))
         {
-            navigation.Current.Instance.DataContext = _bookIndexViewModel;
+            //navigation.Current...DataContext = _bookIndexViewModel;
         }
     }
 
-    private void Theme_Changed(WPFUI.Appearance.ThemeType currentTheme, System.Windows.Media.Color systemAccent)
+    private void Theme_Changed(ThemeType currentTheme, System.Windows.Media.Color systemAccent)
     {
         System.Diagnostics.Debug.WriteLine($"DEBUG | {typeof(MainWindow)} was informed that the theme has been changed to {currentTheme}");
     }
 
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        WPFUI.Appearance.Watcher.Watch(this);
+        Watcher.Watch(this);
     }
 
     private void CloseActionOverride(TitleBar titleBar, Window window)
