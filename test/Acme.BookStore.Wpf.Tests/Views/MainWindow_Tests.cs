@@ -1,15 +1,16 @@
 using Acme.BookStore.Books;
 using Acme.BookStore.Localization;
-using Acme.BookStore.Wpf.Core.Threading;
-using Acme.BookStore.Wpf.Services;
+using Acme.BookStore.WpfApp.Core;
+using Acme.BookStore.WpfApp.Services;
 using Acme.BookStore.Wpf.Tests;
-using Acme.BookStore.Wpf.ViewModels;
+using Acme.BookStore.WpfApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Shouldly;
 using Volo.Abp.MultiTenancy;
 using Xunit;
+using Wpf.Ui.Mvvm.Contracts;
 
 namespace Acme.BookStore.Views;
 
@@ -20,6 +21,7 @@ public class MainWindow_Tests : BookStoreWpfTestBase
     private ISnackbarService _snackbarService;
     private ICurrentTenant _fakeCurrentTenant;
     private readonly IDispatcher _dispatcher;
+    private readonly INavigationService _navigationService;
     private MainWindowViewModel _viewModel;
 
     public MainWindow_Tests()
@@ -29,18 +31,19 @@ public class MainWindow_Tests : BookStoreWpfTestBase
         _snackbarService = GetRequiredService<ISnackbarService>();
         _fakeCurrentTenant = GetRequiredService<ICurrentTenant>();
         _dispatcher = GetRequiredService<IDispatcher>();
+        _navigationService = GetRequiredService<INavigationService>();
         _viewModel = new();
     }
 
     protected override void AfterAddApplication(IServiceCollection services)
     {
         AddTestSubstitution(ref _fakeCurrentTenant, services);
-        AddTestSubstitution(ref _snackbarService, services);
+        //AddTestSubstitution(ref _snackbarService, services);
     }
 
     private void GivenEmptyViewModel()
     {
-        _viewModel = new MainWindowViewModel(_dispatcher, _loggerFactory, _localizer, _snackbarService);
+        _viewModel = new MainWindowViewModel(_navigationService, _dispatcher, _loggerFactory, _localizer);
     }
 
     [UIFact]

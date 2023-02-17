@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Dependency;
-using Acme.BookStore.Wpf.Core.Threading;
+using Acme.BookStore.WpfApp.Core;
 
 namespace Acme.BookStore.Wpf.Tests
 {

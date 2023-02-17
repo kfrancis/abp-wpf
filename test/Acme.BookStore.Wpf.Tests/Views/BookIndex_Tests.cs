@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Acme.BookStore.Books;
 using Acme.BookStore.Localization;
-using Acme.BookStore.Wpf.Core.Threading;
-using Acme.BookStore.Wpf.Services;
-using Acme.BookStore.Wpf.ViewModels;
+using Acme.BookStore.WpfApp.Core;
+using Acme.BookStore.WpfApp.Services;
+using Acme.BookStore.WpfApp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Shouldly;
+using Wpf.Ui.Mvvm.Contracts;
 using Xunit;
 
 namespace Acme.BookStore.Wpf.Tests.Views

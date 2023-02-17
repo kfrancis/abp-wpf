@@ -42,11 +42,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		article.md = article.md
 		common.props = common.props
+		global.json = global.json
 		NuGet.Config = NuGet.Config
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf", "src\Acme.BookStore.Wpf\Acme.BookStore.Wpf.csproj", "{66FFAA45-2733-480C-A85C-D242ADD8225A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acme.BookStore.Wpf.Tests", "test\Acme.BookStore.Wpf.Tests\Acme.BookStore.Wpf.Tests.csproj", "{2F4BD98D-6460-4221-AF34-4E76F98E852C}"
 EndProject
@@ -56,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{EC68E5
 		images\22-04-msbrw-1649269264.png = images\22-04-msbrw-1649269264.png
 		example.png = example.png
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.BookStore.WpfApp", "src\Acme.BookStore.WpfApp\Acme.BookStore.WpfApp.csproj", "{56E91994-D5F3-481A-8FF9-4FE5FC20BD99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,14 +124,14 @@ Global
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66FFAA45-2733-480C-A85C-D242ADD8225A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66FFAA45-2733-480C-A85C-D242ADD8225A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66FFAA45-2733-480C-A85C-D242ADD8225A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66FFAA45-2733-480C-A85C-D242ADD8225A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E91994-D5F3-481A-8FF9-4FE5FC20BD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E91994-D5F3-481A-8FF9-4FE5FC20BD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E91994-D5F3-481A-8FF9-4FE5FC20BD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E91994-D5F3-481A-8FF9-4FE5FC20BD99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,9 +152,9 @@ Global
 		{E512F4D9-9375-480F-A2F6-A46509F9D824} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{EF480016-9127-4916-8735-D2466BDBC582} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{AA94D832-1CCC-4715-95A9-A483F23A1A5D} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
-		{66FFAA45-2733-480C-A85C-D242ADD8225A} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 		{2F4BD98D-6460-4221-AF34-4E76F98E852C} = {04DBDB01-70F4-4E06-B468-8F87850B22BE}
 		{EC68E528-7D67-452D-9E7C-AE217419F48C} = {5A85961C-8E32-4EEF-9178-D2291CC87A46}
+		{56E91994-D5F3-481A-8FF9-4FE5FC20BD99} = {CA9AC87F-097E-4F15-8393-4BC07735A5B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

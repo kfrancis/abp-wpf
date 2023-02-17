@@ -2,6 +2,7 @@ using System.Globalization;
 using Abp.TestBase;
 using Acme.BookStore.Localization;
 using Acme.BookStore.Wpf;
+using Acme.BookStore.WpfApp;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;

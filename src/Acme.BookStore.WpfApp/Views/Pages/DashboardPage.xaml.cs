@@ -1,0 +1,23 @@
+using Volo.Abp.DependencyInjection;
+using Wpf.Ui.Common.Interfaces;
+
+namespace Acme.BookStore.WpfApp.Views.Pages
+{
+    /// <summary>
+    /// Interaction logic for DashboardPage.xaml
+    /// </summary>
+    public partial class DashboardPage : INavigableView<ViewModels.DashboardViewModel>
+    {
+        public ViewModels.DashboardViewModel ViewModel
+        {
+            get;
+        }
+
+        public DashboardPage(ViewModels.DashboardViewModel viewModel)
+        {
+            ViewModel = viewModel;
+
+            InitializeComponent();
+        }
+    }
+}
