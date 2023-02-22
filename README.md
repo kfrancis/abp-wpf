@@ -22,7 +22,7 @@ This makes it so we can cut loads of boilerplate out like this:
 
 In `BookIndexViewModel.cs` 
 ```c#
-[ICommand]
+[RelayCommand]
 public async Task InitialAsync()
 {
     await LoadDataAsync();
@@ -42,7 +42,7 @@ You can even handle the CanExecute simply:
 ```c#
 public bool GetIsNotBusy() => IsNotBusy;
 
-[ICommand(CanExecute = "GetIsNotBusy", AllowConcurrentExecutions = true)]
+[RelayCommand(CanExecute = "GetIsNotBusy", AllowConcurrentExecutions = true)]
 public async Task InitialAsync()
 {
     await LoadDataAsync();
